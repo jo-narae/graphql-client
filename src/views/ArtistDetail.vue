@@ -39,72 +39,74 @@
         </v-col>
       </template>
 
-      <v-col
-        class="mt-6"
-        cols="12"
-      >
-        <strong>앨범 목록</strong>
-      </v-col>
-      <v-col
-        cols="12"
-        md="12"
-      >
-        <v-carousel
-          reverse-transition="fade-transition"
-          transition="fade-transition"
-          hide-delimiters
-          v-model="albumIndex"
+      <v-row v-if="artist.albums.length">
+        <v-col
+          class="mt-6"
+          cols="12"
         >
-          <v-carousel-item
-            v-for="album in artist.albums"
-            :key="album.id"
-          >
-            <v-img
-              :src="album.img"
-              class="white--text align-end"
-              gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
-            >
-              <v-card-title v-text="album.name"></v-card-title>
-            </v-img>
-          </v-carousel-item>
-        </v-carousel>
-      </v-col>
-      <v-col
+          <strong>앨범 목록</strong>
+        </v-col>
+        <v-col
           cols="12"
           md="12"
         >
-      <v-simple-table>
-            <template v-slot:default>
-              <thead>
-                <tr>
-                  <th class="text-left">
-                    Track
-                  </th>
-                  <th class="text-left">
-                    Name
-                  </th>
-                  <th class="text-left">
-                    Paly Time
-                  </th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  v-for="music in artist.albums[albumIndex].music"
-                  :key="music.id"
-                >
-                  <td>{{ music.track }}</td>
-                  <td>{{ music.name }}
-                    <v-chip v-if="music.title" class="ml-2" dark x-small>
-                      Title
-                    </v-chip>
-                  </td>
-                  <td>{{ music.play_time }}</td>
-                </tr>
-              </tbody>
-            </template>
-          </v-simple-table>
-      </v-col>
+          <v-carousel
+            reverse-transition="fade-transition"
+            transition="fade-transition"
+            hide-delimiters
+            v-model="albumIndex"
+          >
+            <v-carousel-item
+              v-for="album in artist.albums"
+              :key="album.id"
+            >
+              <v-img
+                :src="album.img"
+                class="white--text align-end"
+                gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+              >
+                <v-card-title v-text="album.name"></v-card-title>
+              </v-img>
+            </v-carousel-item>
+          </v-carousel>
+        </v-col>
+        <v-col
+            cols="12"
+            md="12"
+          >
+        <v-simple-table>
+          <template v-slot:default>
+            <thead>
+              <tr>
+                <th class="text-left">
+                  Track
+                </th>
+                <th class="text-left">
+                  Name
+                </th>
+                <th class="text-left">
+                  Paly Time
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr
+                v-for="music in artist.albums[albumIndex].music"
+                :key="music.id"
+              >
+                <td>{{ music.track }}</td>
+                <td>{{ music.name }}
+                  <v-chip v-if="music.title" class="ml-2" dark x-small>
+                    Title
+                  </v-chip>
+                </td>
+                <td>{{ music.play_time }}</td>
+              </tr>
+            </tbody>
+          </template>
+        </v-simple-table>
+        </v-col>
+      </v-row>
     </v-row>
   </v-container>
 </template>
@@ -118,11 +120,6 @@ export default {
     return {
       artist: null,
       albumIndex: 0
-    }
-  },
-  methods: {
-    moveToArtistDetail(id) {
-      console.log(id);
     }
   },
   async created() {
