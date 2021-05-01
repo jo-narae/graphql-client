@@ -9,7 +9,13 @@
     </v-app-bar>
 
     <v-main>
-      <router-view />
+      <v-container>
+        <v-row no-gutters justify="center">
+          <v-col cols="10">
+            <router-view />
+          </v-col>
+        </v-row>
+      </v-container>
     </v-main>
   </v-app>
 </template>

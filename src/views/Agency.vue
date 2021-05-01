@@ -4,7 +4,7 @@
       <v-col
         v-for="agency in agencies"
         :key="agency.id"
-        cols="3"
+        cols="6"
       >
       <v-card class="mx-auto my-2" light>
         <v-img

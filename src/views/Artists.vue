@@ -4,7 +4,7 @@
       <v-col
         v-for="artist in artists"
         :key="artist.id"
-        cols="3"
+        cols="4"
       >
         <v-card class="mx-auto my-2" light>
           <v-img

@@ -64,6 +64,7 @@
                 :src="album.img"
                 class="white--text align-end"
                 gradient="to bottom, rgba(0,0,0,.1), rgba(0,0,0,.5)"
+                height="500px"
               >
                 <v-card-title v-text="album.name"></v-card-title>
               </v-img>
