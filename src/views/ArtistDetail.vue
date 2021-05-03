@@ -55,6 +55,7 @@
             transition="fade-transition"
             hide-delimiters
             v-model="albumIndex"
+            class="mx-auto"
           >
             <v-carousel-item
               v-for="album in artist.albums"
